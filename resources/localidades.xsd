@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="direccion" type="xs:string"/>
+	<xs:element name="velocidad" type="xs:string"/>
+	<xs:element name="maxima" type="xs:byte"/>
+	<xs:element name="minima" type="xs:byte"/>
+	<xs:element name="dato">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="hora" type="xs:byte" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="prob_precipitacion">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="periodo" type="xs:string" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cota_nieve_prov">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="periodo" type="xs:string" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="estado_cielo">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="periodo" type="xs:string" use="optional"/>
+					<xs:attribute name="descripcion" type="xs:string" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="viento">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="direccion"/>
+				<xs:element ref="velocidad"/>
+			</xs:sequence>
+			<xs:attribute name="periodo" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="racha_max">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="periodo" type="xs:string" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="temperatura">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="maxima"/>
+				<xs:element ref="minima"/>
+				<xs:element ref="dato" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sens_termica">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="maxima"/>
+				<xs:element ref="minima"/>
+				<xs:element ref="dato" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="humedad_relativa">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="maxima"/>
+				<xs:element ref="minima"/>
+				<xs:element ref="dato" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="uv_max" type="xs:string"/>
+	<xs:element name="dia">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="prob_precipitacion" maxOccurs="unbounded"/>
+				<xs:element ref="cota_nieve_prov" maxOccurs="unbounded"/>
+				<xs:element ref="estado_cielo" maxOccurs="unbounded"/>
+				<xs:element ref="viento" maxOccurs="unbounded"/>
+				<xs:element ref="racha_max" maxOccurs="unbounded"/>
+				<xs:element ref="temperatura"/>
+				<xs:element ref="sens_termica"/>
+				<xs:element ref="humedad_relativa"/>
+				<xs:element ref="uv_max" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="fecha" type="xs:date" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="elaborado" type="xs:dateTime"/>
+	<xs:element name="nombre" type="xs:string"/>
+	<xs:element name="provincia" type="xs:string"/>
+	<xs:element name="prediccion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dia" maxOccurs="7"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="productor" type="xs:string"/>
+	<xs:element name="web" type="xs:string"/>
+	<xs:element name="enlace" type="xs:string"/>
+	<xs:element name="language" type="xs:string"/>
+	<xs:element name="copyright" type="xs:string"/>
+	<xs:element name="nota_legal" type="xs:string"/>
+	<xs:element name="origen">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="productor"/>
+				<xs:element ref="web"/>
+				<xs:element ref="enlace"/>
+				<xs:element ref="language"/>
+				<xs:element ref="copyright"/>
+				<xs:element ref="nota_legal"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="root">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="origen"/>
+				<xs:element ref="elaborado"/>
+				<xs:element ref="nombre"/>
+				<xs:element ref="provincia"/>
+				<xs:element ref="prediccion"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string"/>
+			<xs:attribute name="version" type="xs:float"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
