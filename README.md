@@ -1,6 +1,6 @@
 # meteo-forecast
 
-A Rust application that fetches weather forecast data from AEMET (Spanish Meteorological Agency), formats it into a human-readable report, and sends it as a JSON payload to a mail service (e.g., rustmail) for email delivery.
+A Rust application that fetches weather forecast data from AEMET (Spanish Meteorological Agency), formats it into a human-readable report, and sends it as a JSON payload to [rustmail](https://github.com/albertoielpo/rustmail.git) for email delivery.
 
 ## Features
 
