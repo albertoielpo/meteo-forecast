@@ -10,7 +10,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 git credentialsId: 'jenkins-ielpo-local', 
-                    url: "${GITHUB_ALBERTOIELPO_URL}/meteo-forecast.git",
+                    url: "${GITHUB_ALBERTOIELPO_URL}/${APP_NAME}.git",
                     branch: "${GIT_BRANCH}"
             }
         }
