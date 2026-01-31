@@ -17,13 +17,13 @@ fn format_weather_report(root: &Root) -> String {
     report.push_str(&format!("METEO FORECAST FOR {} ({})\n", root.nombre, root.provincia));
     report.push_str(&format!("Generated: {}\n", root.elaborado));
     report.push_str(&format!("Source: {}\n", root.origen.productor));
-    report.push_str(&"=".repeat(60));
+    report.push_str(&"=".repeat(41));
     report.push('\n');
 
     for dia in &root.prediccion.dia {
         if let Some(ref fecha) = dia.fecha {
             report.push_str(&format!("\n📅 DATE: {}\n", fecha));
-            report.push_str(&"-".repeat(40));
+            report.push_str(&"-".repeat(41));
             report.push('\n');
         }
 
@@ -151,7 +151,7 @@ fn format_weather_report(root: &Root) -> String {
         }
 
         report.push_str(&"\n");
-        report.push_str(&"=".repeat(60));
+        report.push_str(&"=".repeat(41));
         report.push('\n');
     }
 
